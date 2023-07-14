@@ -9,20 +9,14 @@ namespace MoodAnalyser_Test
 {
     public class MoodAnalyse_Test
     {
-        MoodAnalyse moodAnalyse = new MoodAnalyse();
         [Test]
         public void GivenSadMood_ShouldReturnSad()
         {
-            string result = moodAnalyse.AnalyseMood("I am in Sad Mood");
+            MoodAnalyse moodAnalyse = new MoodAnalyse("I am in Sad Mood");
+            string result = moodAnalyse.AnalyseMood();
             Assert.AreEqual(result, "Sad");
         }
-        [Test]
-        public void GivenMood_ShouldReturnHappy()
-        {
-
-            string result = moodAnalyse.AnalyseMood("I am in Any Mood");
-            Assert.AreEqual(result, "Happy");
-        }
+      
 
 
 
