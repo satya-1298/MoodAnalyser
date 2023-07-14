@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MoodAnalyzer_Demo
 {
-    internal class MoodAnalyse
+    public class MoodAnalyse
     {
+        public string AnalyseMood(string message)
+        {
+            //My name is Sad
+            if (message.Contains("Sad"))
+            {
+                return "Sad"; 
+            }
+            else
+            {
+                return "Happy";
+            }
+        }
     }
 }
