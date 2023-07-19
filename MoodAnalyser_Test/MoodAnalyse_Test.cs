@@ -48,6 +48,23 @@ namespace MoodAnalyser_Test
 
             }
         }
+        [Test]
+        public void GivenEmptyMessage_ShouldThrowCustomException()
+        {
+            try
+            {
+                //Arrange - it will set up the testing object
+                MoodAnalyse moodAnalyse = new MoodAnalyse(" ");
+                //Act - it will perform the actual work what we want test
+                string result = moodAnalyse.AnalyseMood();
+            }
+            catch (MoodAnalyseCustom_Exception ex)
+            {
+                //Assert - which verify the result  by equal actual and expected output
+                Assert.AreEqual(ex.Message, "Message should not be Empty");
+
+            }
+        }
 
 
 
