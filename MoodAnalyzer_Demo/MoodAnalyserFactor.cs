@@ -15,8 +15,7 @@ namespace MoodAnalyzer_Demo
         public static object CreateMoodAnalyse(string className, string constructorName)
         {
             Type type = typeof(MoodAnalyse);
-            //if (type.Name.Equals(className) || type.FullName.Equals(className))
-            //{
+           
             if (type.Name.Equals(constructorName))
             {
                 ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
@@ -26,9 +25,7 @@ namespace MoodAnalyzer_Demo
             else if (type.FullName.Equals(className))
             {
                 throw new MoodAnalyseCustom_Exception("Constructor is Not Found",MoodAnalyser_ExceptionType.NO_SUCH_METHOD);
-            }
-
-            //}
+            }           
             else
             {
                 throw new MoodAnalyseCustom_Exception("Class Not Found",MoodAnalyser_ExceptionType.NO_SUCH_CLASS);
