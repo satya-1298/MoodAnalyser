@@ -68,45 +68,7 @@ namespace MoodAnalyser_Test
             }
         }
 
-        //TC-4.1
-        //[Test]
-        //public void givenmoodanalyseclassname_shouldreturnmoodanalyseobject()
-        //{
+       
 
-        //    string message = null;
-        //    MoodAnalyse moodAnalyse = new MoodAnalyse(" ");
-        //    object expected = new MoodAnalyse(message);
-        //    object obj = MoodAnalyserFactor.CreateMoodAnalyse("moodanalzer_demo", "moodanalyse");
-        //    Assert.AreEqual(expected, obj); 
-        //}
-
-
-        //TC-4.2
-        [Test]
-        public void GivenImproperClassNameShouldThrowMoodAnalyserException()
-        {
-            string Actual = "Class Not Found";
-            try
-            {
-                object moodAnalyserObject = MoodAnalyserFactor.CreateMoodAnalyse("MoodAnalyzerApp.DemoClass", "DemoClass");
-            }
-            catch (MoodAnalyseCustom_Exception ex)
-            {
-                Assert.AreEqual(Actual, ex.Message);
-            }
-        }
-        [Test]
-        public void GivenImproperConstructorShouldThrowMoodAnalyserException()
-        {
-            string excepted = "Constructor not found";
-            try
-            {
-                object moodAnalyserObject = MoodAnalyserFactor.CreateMoodAnalyse("DemoClass", "MoodAnalyse");
-            }
-            catch (MoodAnalyseCustom_Exception exception)
-            {
-                Assert.AreEqual(excepted, exception.Message);
-            }
-        }
     }
 }

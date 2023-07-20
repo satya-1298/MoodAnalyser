@@ -14,23 +14,28 @@ namespace MoodAnalyzer_Demo
        
         public static object CreateMoodAnalyse(string className, string constructorName)
         {
-            Type type = typeof(MoodAnalyse);
-           
-            if (type.Name.Equals(constructorName))
-            {
-                ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
-                object instance = ctor.Invoke(new object[] { "HAPPY" });
-                return instance;
-            }
-            else if (type.FullName.Equals(className))
-            {
-                throw new MoodAnalyseCustom_Exception("Constructor is Not Found",MoodAnalyser_ExceptionType.NO_SUCH_METHOD);
-            }           
-            else
-            {
-                throw new MoodAnalyseCustom_Exception("Class Not Found",MoodAnalyser_ExceptionType.NO_SUCH_CLASS);
-            }
+               string pattern = @"." + constructorName + "$";
+                Match result = Regex.Match(className, pattern);
 
+                if (result.Success)
+                {
+                    try
+                    {
+                        Assembly executing = Assembly.GetExecutingAssembly();
+                        Type moodAnalyseType = executing.GetType(className);
+                        return Activator.CreateInstance(moodAnalyseType);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        throw new MoodAnalyseCustom_Exception("Class not found", MoodAnalyser_ExceptionType.NO_SUCH_CLASS);
+                    }
+
+                }
+                else
+                {
+                    throw new MoodAnalyseCustom_Exception("Constructor not found",MoodAnalyser_ExceptionType.NO_SUCH_METHOD);
+
+                }            
         }
     }
 }
