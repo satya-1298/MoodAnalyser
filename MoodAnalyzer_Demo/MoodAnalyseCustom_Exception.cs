@@ -14,6 +14,9 @@ namespace MoodAnalyzer_Demo
         {
             NULL_MOOD,
             EMPTY_MOOD,
+            NO_SUCH_CLASS,
+            NO_SUCH_METHOD
+
         }
         public MoodAnalyser_ExceptionType type;
         //Base - This keyword  is used to access member of a base class  with in a derived class
