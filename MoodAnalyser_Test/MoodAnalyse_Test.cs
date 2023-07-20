@@ -67,8 +67,20 @@ namespace MoodAnalyser_Test
 
             }
         }
-
-       
-
+        //TC-4.2
+        [Test]
+        public void GivenImproperClassNameShouldThrowMoodAnalyserException()
+        {
+            string Actual = "Class Not Found";
+            try
+            {
+                object moodAnalyserObject = MoodAnalyserFactor.CreateMoodAnalyse("MoodAnalyzerApp.DemoClass", "DemoClass");
+            }
+            catch (MoodAnalyseCustom_Exception ex)
+            {
+                Assert.AreEqual(Actual, ex.Message);
+            }
+        }
+        
     }
 }
