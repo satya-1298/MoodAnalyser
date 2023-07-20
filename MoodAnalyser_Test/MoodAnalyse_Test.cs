@@ -95,6 +95,18 @@ namespace MoodAnalyser_Test
                 Assert.AreEqual(Actual, ex.Message);
             }
         }
-       
+        [Test]
+        public void GivenImproperConstructorShouldThrowMoodAnalyserException()
+        {
+            string excepted = "Constructor not found";
+            try
+            {
+                object moodAnalyserObject = MoodAnalyserFactor.CreateMoodAnalyse("DemoClass", "MoodAnalyse");
+            }
+            catch (MoodAnalyseCustom_Exception exception)
+            {
+                Assert.AreEqual(excepted, exception.Message);
+            }
+        }
     }
 }
